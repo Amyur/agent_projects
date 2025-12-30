@@ -33,7 +33,7 @@ class AgenteCalificador:
         """
         Modelo llm 
         """
-        self.llm = ChatAnthropic(model="claude-haiku-4-5-20251001", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
+        self.llm = ChatAnthropic(model="claude-3-5-haiku-20241022", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
 
     def run(self, state:Estado) -> Estado:
 

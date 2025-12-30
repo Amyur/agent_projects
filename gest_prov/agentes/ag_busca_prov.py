@@ -9,6 +9,7 @@ from config.retry import reintentar
 from config.estados import Estado
 from langchain.agents import create_agent
 from tools.buscador_web import duckduckgo_search_tool
+from datetime import date
 
 
 
@@ -26,7 +27,7 @@ class AgenteBuscaProveedores:
         """
         Modelo llm 
         """
-        self.llm = ChatAnthropic(model="claude-haiku-4-5-20251001", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
+        self.llm = ChatAnthropic(model="claude-3-5-haiku-20241022", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
 
     def run(self, state:Estado) -> Estado:
 
@@ -36,7 +37,7 @@ class AgenteBuscaProveedores:
 
             Eres un experto en búsqueda de proveedores de el producto que se solicite. 
 
-            Tener en cuenta que la fecha de hoy es 16-11-2025
+            Tener en cuenta que la fecha de hoy es {date.today()}
 
             Tu tarea es encontrar 3 proveedores relevantes según la solicitud del usuario.
 

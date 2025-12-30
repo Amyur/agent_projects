@@ -58,6 +58,6 @@ flujo.add_edge("calificador", END)
 
 
 app = flujo.compile()
-salida = app.invoke(Estado(solicitud_usuario="necesito buscar los mejores proveedores de llantas de autos de gama media en medellin, " \
-                                          "me interesan aquellos que ofrezcan pago a credito y tengan buenas promociones"))
+salida = app.invoke(Estado(solicitud_usuario="necesito buscar los mejores proveedores de llantas de autos de gama media en medellín, " \
+                                          "me interesan aquellos que ofrezcan pago a crédito y tengan buenas promociones"))
 print(json.dumps(salida, indent=2, ensure_ascii=False))

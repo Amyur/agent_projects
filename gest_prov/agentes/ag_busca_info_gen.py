@@ -10,7 +10,7 @@ from config.retry import reintentar
 from config.estados import Estado
 from langchain.agents import create_agent
 from tools.buscador_web import duckduckgo_search_tool
-
+from datetime import date
 
 
 #Formato de salida
@@ -30,7 +30,7 @@ class AgenteInfoGeneral:
         """
         Modelo llm 
         """
-        self.llm = ChatAnthropic(model="claude-haiku-4-5-20251001", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
+        self.llm = ChatAnthropic(model="claude-3-5-haiku-20241022", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
 
     def run(self, state:Estado) -> Estado:
 
@@ -40,7 +40,7 @@ class AgenteInfoGeneral:
 
             Eres un experto en busqueda de informacion web.
 
-            Tener en cuenta que la fecha de hoy es 16-11-2025.
+            Tener en cuenta que la fecha de hoy es {date.today()}
             
             Te voy a proporcionar una lista de paginas web.
             Tu tarea es buscar en la web:

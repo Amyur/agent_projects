@@ -10,7 +10,7 @@ from config.retry import reintentar
 from config.estados import Estado
 from langchain.agents import create_agent
 from tools.buscador_web import duckduckgo_search_tool
-
+from datetime import date
 
 
 #Formato de salida
@@ -27,7 +27,7 @@ class AgenteBuscaSentimiento:
         """
         Modelo llm 
         """
-        self.llm = ChatAnthropic(model="claude-haiku-4-5-20251001", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
+        self.llm = ChatAnthropic(model="claude-3-7-sonnet-20250219", anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
 
     def run(self, state:Estado) -> Estado:
 
@@ -37,9 +37,9 @@ class AgenteBuscaSentimiento:
 
             Eres un experto en analisis de sentimiento.
             Te voy a proporcionar una lista de proveedores.
-            Tu tarea es buscar en la web las diferentes opiniones que los clientes le han realizado a los proveedores.
+            Tu tarea es buscar en la web abierta las diferentes opiniones que los clientes le han realizado a los proveedores.
 
-            Tener en cuenta que la fecha de hoy es 16-11-2025.
+            Tener en cuenta que la fecha de hoy es {date.today()}
 
             Debes clasificar el sentimiento encontrado en las opiniones por proveedor de la siguiente manera:
             Negativo: Si las opiniones son negativas.
